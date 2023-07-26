@@ -1,7 +1,12 @@
 .listNews {
+  position: absolute;
   list-style: none;
   margin: 0;
   padding: 0;
+  overflow:auto;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 100%;
   li {
     list-style: none;
     border: 1px solid #ccc;
