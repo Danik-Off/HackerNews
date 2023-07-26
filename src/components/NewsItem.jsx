@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Caching } from "../scripts/Caching";
 
 const NewsItem = ({ id }) => {
     
@@ -17,16 +18,18 @@ const NewsItem = ({ id }) => {
       }
       const data = await response.json();
       setData(data);
+      Caching("news"+id,data);
+     
     } catch (error) {
       console.error("Произошла ошибка:", error);
     }
   };
-  
+
   useEffect(() => {
     
-    
-    fetchNewsItem();
-    
+    const cach =  Caching("news"+id);
+    cach? setData(cach):fetchNewsItem();
+   
   }, []);
   
   return (

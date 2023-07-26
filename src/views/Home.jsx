@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NewsItem from "../components/NewsItem";
+import { Caching } from "../scripts/Caching";
 
 import "./Home.scss";
 
@@ -8,7 +9,7 @@ const Home = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"
+        "https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty"
       );
       if (!response.ok) {
         throw new Error("Ошибка при запросе");
@@ -28,7 +29,8 @@ const Home = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-  const newArray = [...data.slice(0, 101)];
+  const newArray = [...data.slice(0, 100)];
+  const sortedList = newArray.sort((a, b) => b - a);  
   const listNews = newArray.map((news) => (
     <NewsItem key={news} id={news}></NewsItem>
   ));

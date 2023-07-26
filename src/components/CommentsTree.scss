@@ -1,0 +1,32 @@
+// comments-tree.scss
+
+.comments {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .comment {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  
+    .comment-text {
+      margin-bottom: 10px;
+    }
+  
+    .comment-author {
+      font-weight: bold;
+      color: #4d9de0;
+    }
+  
+    .comment-time {
+      color: #777;
+    }
+  
+    .comment-children {
+      margin-left: 20px;
+    }
+  }
+  
