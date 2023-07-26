@@ -19,7 +19,7 @@ const Home = () => {
       console.error("Ошибка при запросе:", error);
     }
   };
-  
+
   useEffect(() => {
     fetchData();
 
@@ -37,12 +37,13 @@ const Home = () => {
     <>
       <button onClick={fetchData}> Обновить</button>
       <hr></hr>
-      {
-        data?( <div>
-            <ul className="listNews">{listNews}</ul>
-          </div>):(<div className="updateWin">Загрузка</div>)
-      }
-     
+      {data ? (
+        <div>
+          <ul className="listNews">{listNews}</ul>
+        </div>
+      ) : (
+        <div className="updateWin">Загрузка</div>
+      )}
     </>
   );
 };
