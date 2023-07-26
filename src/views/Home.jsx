@@ -9,7 +9,8 @@ const Home = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty"
+        // "https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty"
+        "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"
       );
       if (!response.ok) {
         throw new Error("Ошибка при запросе");
@@ -26,12 +27,12 @@ const Home = () => {
 
     const intervalId = setInterval(fetchData, 60 * 1000);
 
-    return () => clearInterval(intervalId);
   }, []);
 
-  const newArray = [...data.slice(0, 100)];
-  const sortedList = newArray.sort((a, b) => b - a);  
-  const listNews = newArray.map((news) => (
+  const newsArray100 = [...data.slice(0, 100)];
+  newsArray100.sort((a, b) => b - a);
+
+  const listNews = newsArray100.map((news) => (
     <NewsItem key={news} id={news}></NewsItem>
   ));
 
