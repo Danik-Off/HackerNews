@@ -22,10 +22,11 @@ const NewsItem = ({ id }) => {
         console.error("Произошла ошибка:", error);
       }
     };
-
+    
     fetchNewsItem();
+    
   }, []);
-
+  
   return (
     <li onClick={() => navigate("/news/" + id)}>
       {data ? (
