@@ -39,7 +39,7 @@ const NewsItem = ({ id }) => {
           <div>
             <h2>{data.title}</h2>
             <div className="details">
-              <span className="like">like {data.score}</span> | by{" "}
+              <span className="rating">like {data.score}</span> | by{" "}
               <span className="author">{data.by}</span> |{" "}
               <span className="date">
                 {new Date(data.time * 1000).toLocaleDateString()}
