@@ -7,21 +7,23 @@ const NewsItem = ({ id }) => {
 
   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    const fetchNewsItem = async () => {
-      try {
-        const response = await fetch(
-          `https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`
-        );
-        if (!response.ok) {
-          throw new Error("Ошибка при выполнении запроса");
-        }
-        const data = await response.json();
-        setData(data);
-      } catch (error) {
-        console.error("Произошла ошибка:", error);
+  const fetchNewsItem = async () => {
+    try {
+      const response = await fetch(
+        `https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`
+      );
+      if (!response.ok) {
+        throw new Error("Ошибка при выполнении запроса");
       }
-    };
+      const data = await response.json();
+      setData(data);
+    } catch (error) {
+      console.error("Произошла ошибка:", error);
+    }
+  };
+  
+  useEffect(() => {
+    
     
     fetchNewsItem();
     
