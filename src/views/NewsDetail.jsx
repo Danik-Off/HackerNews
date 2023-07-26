@@ -3,12 +3,16 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Caching } from "../scripts/Caching";
 import CommentsTree  from "../components/CommentsTree";
 
+
 import "./NewsDetail.scss"
 
 const NewsDetail = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate();3
+
   const params = useParams();
   const id = params.id;
+
+
   const [data, setData] = useState(null);
 
   const fetchNewsItem = async () => {
@@ -27,6 +31,7 @@ const NewsDetail = () => {
     }
   };
 
+  //загружаем данные из кеша если нет то скачиваем и кешируем
   useEffect(() => {
     const cach = Caching("news" + id);
     cach ? setData(cach) : fetchNewsItem();
@@ -54,10 +59,7 @@ const NewsDetail = () => {
           <p>Оригинал новости:<a href={data.url}>{data.url}</a></p>
           ):null}
           <hr/>
-          <h3>Комментарии</h3>
-           <ul>
-
-           </ul>
+          <CommentsTree kidsIds={data.kids}></CommentsTree>
         </div>
       ) : (
         <p>Загрузка...</p>
