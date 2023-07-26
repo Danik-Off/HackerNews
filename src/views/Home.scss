@@ -1,15 +1,15 @@
 .listNews {
   position: absolute;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  overflow:auto;
-  width: 100%;
-  margin-bottom: 10px;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: center;
+  justify-content: center;
+  width: 90%;
   li {
     list-style: none;
     border: 1px solid #ccc;
+
     padding: 16px;
     margin-bottom: 10px;
     border-radius: 8px;
