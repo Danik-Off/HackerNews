@@ -1,0 +1,49 @@
+.listNews {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    list-style: none;
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    &:hover {
+        cursor: pointer;
+        background-color: #e0e0e0; /* Новый фон при наведении */
+        color: #333; /* Новый цвет текста при наведении */
+      }
+  }
+  
+  h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .details {
+    margin-top: 10px;
+    color: #777;
+    font-size: 14px;
+  }
+  
+  .like {
+    color: #f76d57;
+    font-weight: bold;
+  }
+  
+  .author {
+    color: #4d9de0;
+  }
+  
+  .date {
+    color: #555;
+  }
+}
+.updateWin{
+    display: flex;
+    justify-content: center;
+    
+}
