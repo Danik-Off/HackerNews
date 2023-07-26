@@ -34,11 +34,19 @@ const CommentsTree = ({ kidsIds }) => {
       }
     }
   }, [kidsIds]);
-
   return (
     <>
-      <h3>Комментарии</h3>
-      {count}
+      <h3>Комментарии:</h3>
+      Всего: {count}
+      <Comments kidsIds={kidsIds}/>
+    </>
+  );
+ 
+};
+const Comments = ({ kidsIds }) => {
+  return (
+    <>
+      
       <ul className="comments">
         {kidsIds ? (
           kidsIds.map((commentId) => <Comment key={commentId} id={commentId} />)
@@ -48,10 +56,11 @@ const CommentsTree = ({ kidsIds }) => {
       </ul>
     </>
   );
-};
-
+}
 const Comment = ({ id }) => {
   const [data, setData] = useState(null);
+
+  const [showTree, setShowTree] = useState(null);
 
   const fetchNewsItem = async () => {
     try {
@@ -75,20 +84,24 @@ const Comment = ({ id }) => {
   }, [id]);
 
   return (
-    <li className="comment">
+    <li className="comment" >
       {data ? (
-        <>
+        <div >
+          <div onClick={()=>setShowTree(!showTree)}>
           <p dangerouslySetInnerHTML={{ __html: data.text }}></p>
           <div className="comment-author">{data.by}</div>
           <div className="comment-time">
             {new Date(data.time * 1000).toLocaleDateString()}
           </div>
-          {data.kids && data.kids.length > 0 && (
-            <ul className="comment-children">
-              <CommentsTree kidsIds={data.kids} />
-            </ul>
-          )}
-        </>
+          </div>
+          {data.kids &&
+            data.kids.length > 0 &&
+            (showTree ? (
+              <ul className="comment-children">
+                <Comments kidsIds={data.kids} />
+              </ul>
+            ) : "ответов:"+ data.kids.length)}
+        </div>
       ) : (
         <div className="updateWin">Загрузка</div>
       )}
