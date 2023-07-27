@@ -88,8 +88,8 @@ const Comment = ({ id }) => {
       {data ? (
         <div >
           <div onClick={()=>setShowTree(!showTree)}>
-          <p dangerouslySetInnerHTML={{ __html: data.text }}></p>
           <div className="comment-author">{data.by}</div>
+          <p dangerouslySetInnerHTML={{ __html: data.text }}></p>
           <div className="comment-time">
             {new Date(data.time * 1000).toLocaleDateString()}
           </div>
