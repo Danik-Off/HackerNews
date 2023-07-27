@@ -9,8 +9,8 @@ const Home = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        // "https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty"
-        "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"
+        "https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty"
+        // "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"
       );
       if (!response.ok) {
         throw new Error("Ошибка при запросе");
